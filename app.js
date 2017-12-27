@@ -33,10 +33,8 @@ var app = new Vue({
         fetchTodos: function(){ 
             if(this.currentUser){
                 var query = new AV.Query('AllTodos');
-                console.log(query);
                 query.find()
                 .then((todos) => {    
-                    console.log(todos[0]);
                     let avAllTodos = todos[0];
                     let id = avAllTodos.id;
                     this.todoList = JSON.parse(avAllTodos.attributes.content); 
@@ -115,8 +113,7 @@ var app = new Vue({
             if (current) {
                 let {id, createdAt, attributes: {username}} = current;
                 this.currentName = username;
-                return {id, username, createdAt};
-                
+                return {id, username, createdAt}; 
             } else {
                 return null;
             }
